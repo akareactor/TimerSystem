@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // Просто счётчик времени, который используется в TimerClock
-// СИНГЛТОН ЕБАНА МАТ
 
-namespace Space.Kulibin.TimerSystem {
+namespace KulibinSpace.TimerSystem {
 
 	public class TimerClockBody : MonoBehaviour {
 

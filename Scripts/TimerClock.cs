@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
-namespace Space.Kulibin.TimerSystem {
+namespace KulibinSpace.TimerSystem {
 
 	// 18:44 06.03.2021 коннектится к TimerClockBody
 	// Показывает оставшееся время, использует TextMeshPro

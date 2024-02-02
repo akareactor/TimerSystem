@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // Самый простой таймер
-namespace Space.Kulibin.TimerSystem {
+namespace KulibinSpace.TimerSystem {
 
 	public class TimerEvent : MonoBehaviour {
 
