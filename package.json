@@ -1,0 +1,11 @@
+{
+	"name": "space.kulibin.timersystem",
+	"version": "1.0.0",
+	"displayName": "Kulibin Timer System",
+	"description": "This is a simple timing facility",
+	"author": {
+		"name": "Kulibin.Space",
+		"email": "akareactor@mail.ru",
+		"url": "https://www.kulibin.space"
+	}
+}
