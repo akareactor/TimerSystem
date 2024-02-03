@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Просто счётчик времени, который используется в TimerClock
+// Глобальный счётчик обратного времени
 
 namespace KulibinSpace.TimerSystem {
 
-	public class TimerClockBody : MonoBehaviour {
+	public class TimerCountdown : MonoBehaviour {
 
-		public delegate void TimerClockAction();
+		public delegate void TimerAction();
 
-		static TimerClockBody instance; 
+		static TimerCountdown instance; 
 		public float duration; // время для отсчёта по таймеру
 		float startTime;
 		public bool startOnStart = true;
@@ -19,7 +19,7 @@ namespace KulibinSpace.TimerSystem {
 		private bool timerHasStarted = false; // таймер стартовал, перезапускать только по ResetTimer
 		public static float remainder { get { return instance._remainder; }} // запрашивается из клиента
 		float _remainder; // оставшееся время
-		public static event TimerClockAction OnTimerEndAction; // подписка на завершение таймера
+		public static event TimerAction OnTimerEndAction; // подписка на завершение таймера
 		public UnityEvent onTimerEndAction; // событие по завершении таймера
 
 		public void Awake () {
