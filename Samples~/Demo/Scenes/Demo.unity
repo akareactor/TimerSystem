@@ -454,8 +454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58, y: 108}
-  m_SizeDelta: {x: 302.265, y: 50}
+  m_AnchoredPosition: {x: 7.9995, y: 95}
+  m_SizeDelta: {x: 362.87, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &816274239
 MonoBehaviour:
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_textMeshPro: {fileID: 816274240}
-  label: '<color=#0050FF>Time left: </color>{0:0}'
+  label: '<color=#FF103F>Time left: </color>{0:0}'
   refreshRate: 1
 --- !u!114 &816274240
 MonoBehaviour:
@@ -501,8 +501,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280202240
-  m_fontColor: {r: 0, g: 0.7075472, b: 0.11817965, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -607,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.867096, y: 25.91681}
+  m_SizeDelta: {x: -174.3161, y: -125.1594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911696350
 MonoBehaviour:
@@ -682,9 +682,9 @@ RectTransform:
   - {fileID: 811235046}
   m_Father: {fileID: 911696349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.46363214}
-  m_AnchorMax: {x: 0, y: 0.46363214}
-  m_AnchoredPosition: {x: 92, y: -10.889}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.020004272, y: 31}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &930052420
@@ -918,7 +918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 88.30359, y: -27}
+  m_AnchoredPosition: {x: 8, y: -40}
   m_SizeDelta: {x: 362.8712, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317958155
@@ -935,8 +935,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerClock: {fileID: 1696893323}
   m_textMeshPro: {fileID: 1317958156}
-  label: '<#0050FF>Current time: </color>{0:2}'
+  label: '<#0050FF>Current time: </color>{0:D2}:{1:D2}:{2:D2}'
   refreshRate: 10
+  raw: 0
 --- !u!114 &1317958156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +992,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1153,8 +1154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.000492, y: 45}
-  m_SizeDelta: {x: 302.265, y: 50}
+  m_AnchoredPosition: {x: 8, y: 32}
+  m_SizeDelta: {x: 362.87, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874046303
 MonoBehaviour:
@@ -1225,7 +1226,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
