@@ -18,6 +18,7 @@ namespace KulibinSpace.TimerSystem {
 
 		void OnEnable() {
 			time = Time.time;
+            SetFormattedText(TimerCountdown.remainder % 1000);
 		}
 
 		void SetFormattedText (float s) {
