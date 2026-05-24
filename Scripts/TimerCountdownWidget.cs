@@ -1,69 +1,95 @@
 ﻿using System;
-using UnityEngine;
+using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Localization;
 
 namespace KulibinSpace.TimerSystem {
 
-	// Показывает оставшееся время TimerCountdown, использует TextMeshPro
-	// Запускается извне
+    // Показывает оставшееся время TimerCountdown через TextMeshPro.
+    //
+    // Особенности:
+    // - поддержка Unity Localization
+    // - без async/await (WebGL-safe)
+    // - обновление через корутину
+    // - кэширование локализованного шаблона
+    // - поддержка RAW и HH:MM:SS режима
+    //
+    // Пример строки локализации:
+    //
+    // timer_countdown
+    // EN: Time left: {0}
+    // RU: Осталось: {0}
 
-	public class TimerCountdownWidget : MonoBehaviour {
+    public class TimerCountdownWidget : MonoBehaviour {
 
-		public TextMeshProUGUI m_textMeshPro;
-		//private TMP_FontAsset m_FontAsset;
-		public string label = "<#0050FF>Time left: </color>{0:2}";
-		public float refreshRate = 1; // частота обновления дисплея таймера, Гц
-		public bool raw = false; // выводить секунды одним числом, без разбивки на HH:MM:SS 
-		float time;
+        [Header("References")]
+        public TextMeshProUGUI textMesh;
 
-		void OnEnable() {
-			time = Time.time;
-            SetFormattedText(TimerCountdown.remainder % 1000);
-		}
+        [Header("Localization")]
+        public LocalizedString localizedLabel;
 
-		void SetFormattedText (float s) {
-			if (raw) {
-				m_textMeshPro.SetText(label, s);
-			} else {
-				TimeSpan sec = TimeSpan.FromSeconds(s);
-				m_textMeshPro.SetText(string.Format(label, sec.Hours, sec.Minutes, sec.Seconds));
-			}
-			//m_textMeshPro.SetText(label, TimeSpan.FromSeconds(s).ToString(@"mm\:ss"));
-			//m_textMeshPro.SetText(TimeSpan.FromSeconds(s).ToString(@"mm\:ss"));
-			//string.Format("{0:D2}:{1:D2}:{2:D2}", sec.Hours, sec.Minutes, sec.Seconds
-			//m_textMeshPro.SetText(label, sec.Minutes, sec.Seconds); // label не форматирует нулями, как надо
-			//m_textMeshPro.SetText(string.Format("{0:D2}:{1:D2}:{2:D2}", sec.Hours, sec.Minutes, sec.Seconds));
-		}
+        [Header("Settings")]
+        public float refreshRate = 1f;
+        public bool raw = false;
+        public bool showHours = true;
 
-		void Update () {
-			if (Time.time - time > 1.0f / refreshRate) {
-				time = Time.time;
-				//m_textMeshPro.SetText(label, TimerCountdown.remainder % 1000);
-                SetFormattedText(TimerCountdown.remainder % 1000);
-			}
-		}
-        
-		void Start() {
-			// Add new TextMesh Pro Component
-			if (!m_textMeshPro) m_textMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-			//m_textMeshPro.autoSizeTextContainer = true;
-			// Load the Font Asset to be used.
-			//m_FontAsset = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-			//m_textMeshPro.font = m_FontAsset;
-			// Assign Material to TextMesh Pro Component
-			//m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/LiberationSans SDF - Bevel", typeof(Material)) as Material;
-			//m_textMeshPro.fontSharedMaterial.EnableKeyword("BEVEL_ON");
-			// Set various font settings.
-			//m_textMeshPro.fontSize = 20;
-			//m_textMeshPro.alignment = TextAlignmentOptions.Center;
-			//m_textMeshPro.anchorDampening = true; // Has been deprecated but under consideration for re-implementation.
-			//m_textMeshPro.enableAutoSizing = true;
-			//m_textMeshPro.characterSpacing = 0.2f;
-			//m_textMeshPro.wordSpacing = 0.1f;
-			//m_textMeshPro.enableCulling = true;
-			//m_textMeshPro.enableWordWrapping = false; 
-			//textMeshPro.fontColor = new Color32(255, 255, 255, 255);
-		}
+        string cachedFormat = "{0}";
+        float refreshInterval;
+        float nextRefreshTime;
 
-	}
+        void Awake () {
+            if (!textMesh) textMesh = GetComponent<TextMeshProUGUI>();
+            if (refreshRate <= 0f) refreshRate = 1f;
+            refreshRate = Mathf.Max(0.01f, refreshRate);
+            refreshInterval = 1f / refreshRate;
+        }
+
+        void Update () {
+            if (Time.time < nextRefreshTime) return;
+            nextRefreshTime = Time.time + refreshInterval;
+            UpdateText();
+        }
+
+        void OnEnable () {
+            localizedLabel.StringChanged += OnLocalizedStringChanged;
+            localizedLabel.RefreshString();
+        }
+
+        void OnDisable () {
+            localizedLabel.StringChanged -= OnLocalizedStringChanged;
+        }
+
+        void OnLocalizedStringChanged (string value) {
+            if (!string.IsNullOrEmpty(value)) cachedFormat = value;
+            UpdateText();
+        }
+
+        void UpdateText () {
+            if (!textMesh) return;
+            float remainder = Mathf.Max(0f, TimerCountdown.remainder);
+            string timeText;
+            if (raw) {
+                timeText = Mathf.CeilToInt(remainder).ToString();
+            } else {
+                TimeSpan ts = TimeSpan.FromSeconds(remainder);
+                if (showHours || ts.Hours > 0) {
+                    timeText = string.Format(
+                        "{0:D2}:{1:D2}:{2:D2}",
+                        ts.Hours,
+                        ts.Minutes,
+                        ts.Seconds
+                    );
+                } else {
+                    timeText = string.Format(
+                        "{0:D2}:{1:D2}",
+                        ts.Minutes,
+                        ts.Seconds
+                    );
+                }
+            }
+            textMesh.text = string.Format(cachedFormat, timeText);
+        }
+
+    }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,10 +469,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74db6af7d4ba399408704ea509bc96f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_textMeshPro: {fileID: 816274240}
-  label: '<color=#FF103F>Time left: </color>{0:0}'
+  textMesh: {fileID: 816274240}
+  localizedLabel:
+    m_TableReference:
+      m_TableCollectionName: GUID:cb3f49662ffd30549b6f11940e0d0669
+    m_TableEntryReference:
+      m_KeyId: 23927447552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   refreshRate: 1
   raw: 1
+  showHours: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &816274240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.867096, y: 25.91681}
+  m_AnchoredPosition: {x: 3.8670654, y: 25.91681}
   m_SizeDelta: {x: -174.3161, y: -125.1594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911696350
@@ -962,10 +974,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74db6af7d4ba399408704ea509bc96f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_textMeshPro: {fileID: 1284871084}
-  label: '<#0050FF>Current time: </color>{0:D2}:{1:D2}:{2:D2}'
+  textMesh: {fileID: 1284871084}
+  localizedLabel:
+    m_TableReference:
+      m_TableCollectionName: GUID:cb3f49662ffd30549b6f11940e0d0669
+    m_TableEntryReference:
+      m_KeyId: 23927447552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   refreshRate: 1
   raw: 0
+  showHours: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1284871084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,10 +1373,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74db6af7d4ba399408704ea509bc96f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_textMeshPro: {fileID: 1874046304}
-  label: '<color=#0050FF>Time left: </color>{0:2}'
+  textMesh: {fileID: 1874046304}
+  localizedLabel:
+    m_TableReference:
+      m_TableCollectionName: GUID:cb3f49662ffd30549b6f11940e0d0669
+    m_TableEntryReference:
+      m_KeyId: 23927447552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   refreshRate: 10
   raw: 1
+  showHours: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1874046304
 MonoBehaviour:
   m_ObjectHideFlags: 0
