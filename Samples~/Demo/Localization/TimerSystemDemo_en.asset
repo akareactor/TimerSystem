@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 23927447552
-    m_Localized: <#FFFFFF>Time left  </color>{0:1} sec.
+    m_Localized: <#FFFFFF>Time left  </color>{0:0.0} sec.
     m_Metadata:
       m_Items: []
   references:

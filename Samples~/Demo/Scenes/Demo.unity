@@ -479,9 +479,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  format: "\u0414\u043E \u0432\u0441\u043F\u044B\u0448\u043A\u0438 {0:0.0} \u0441\u0435\u043A."
   refreshRate: 1
-  raw: 1
-  showHours: 1
   references:
     version: 2
     RefIds: []
@@ -977,16 +976,15 @@ MonoBehaviour:
   textMesh: {fileID: 1284871084}
   localizedLabel:
     m_TableReference:
-      m_TableCollectionName: GUID:cb3f49662ffd30549b6f11940e0d0669
+      m_TableCollectionName: 
     m_TableEntryReference:
-      m_KeyId: 23927447552
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  format: "\u0414\u043E \u0432\u0441\u043F\u044B\u0448\u043A\u0438 {2:00}:{3:00}"
   refreshRate: 1
-  raw: 0
-  showHours: 1
   references:
     version: 2
     RefIds: []
@@ -1383,9 +1381,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  format: "\u0414\u043E \u0432\u0441\u043F\u044B\u0448\u043A\u0438 {0:0.0} \u0441\u0435\u043A."
   refreshRate: 10
-  raw: 1
-  showHours: 1
   references:
     version: 2
     RefIds: []

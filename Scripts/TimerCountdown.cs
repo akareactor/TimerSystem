@@ -34,7 +34,7 @@ namespace KulibinSpace.TimerSystem {
 		}
 
 		public void ResetTimer (float newDuration) {
-			duration = newDuration;
+			instance.duration = newDuration;
 			ResetTimer();
 		}
 	
