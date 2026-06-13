@@ -11,41 +11,51 @@ namespace KulibinSpace.TimerSystem {
 
 		public delegate void TimerAction();
 
-		static TimerCountdown instance; 
+		static TimerCountdown instance;
 		public float duration; // время для отсчёта по таймеру
 		float startTime;
 		public bool startOnStart = true;
 		public bool startOnEnable = false;
 		private bool timerHasStarted = false; // таймер стартовал, перезапускать только по ResetTimer
-		public static float remainder { get { return instance._remainder; }} // запрашивается из клиента
+		public static float remainder { get { return instance ? instance._remainder : 0f; }} // запрашивается из клиента
 		float _remainder; // оставшееся время
 		public static event TimerAction OnTimerEndAction; // подписка на завершение таймера
 		public UnityEvent onTimerEndAction; // событие по завершении таймера
 
 		public void Awake () {
+			if (instance && instance != this) {
+				Debug.LogError("Multiple TimerCountdown instances");
+				Destroy(gameObject);
+				return;
+			}
+
 			instance = this;
-			instance._remainder = instance.duration;
+			_remainder = duration;
+		}
+
+		void OnDestroy () {
+			if (instance == this) instance = null;
 		}
 
 		public void ResetTimer () {
 			startTime = Time.time;
 			timerHasStarted = true;
-			instance._remainder = instance.duration;
+			_remainder = duration;
 		}
 
 		public void ResetTimer (float newDuration) {
-			instance.duration = newDuration;
+			duration = newDuration;
 			ResetTimer();
 		}
-	
+
 		public void StopTimer () {
 			timerHasStarted = false;
 		}
-	
+
 		void Update () {
 			if (timerHasStarted) {
-				if (instance._remainder > 0f) 
-					instance._remainder = instance.duration - (Time.time - startTime);
+				if (_remainder > 0f)
+					_remainder = duration - (Time.time - startTime);
 				else {
 					timerHasStarted = false;
 					if (OnTimerEndAction != null) OnTimerEndAction();
@@ -53,12 +63,12 @@ namespace KulibinSpace.TimerSystem {
 				}
 			}
 		}
-	
+
 		void OnEnable () {
 			if (startOnEnable) ResetTimer();
 		}
-	
-		void Start() {
+
+		void Start () {
 			if (startOnStart) ResetTimer();
 		}
 
